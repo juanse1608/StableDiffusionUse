@@ -67,8 +67,8 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
         display_toolbar=True
     )
     
-    schedules = [0.5,0.6,0.7]
-    scales = [7.0,9.0]
+    schedules = [0.85,0.9,0.95]
+    scales = [7.0]
     logging.info(schedules)
     logging.info(scales)
     prompt = st.text_input("")
