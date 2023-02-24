@@ -109,8 +109,9 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
                         # st.image(img, width=width)
                         # img.save(str(artifact.seed)+ ".png") # Save our generated images with their seed number as the filename.
             
-            for idx_r in range(len(schedules)):
-                cols = st.columns(len(scales))
-                for idx_c, col in enumerate(cols):
-                    col.image(imgs[(idx_r*len(cols))+idx_c].resize((width//10, height//10)), width=width//10)
+        divider = 3
+        for idx_r in range(len(schedules)):
+            cols = st.columns(len(scales))
+            for idx_c, col in enumerate(cols):
+                col.image(imgs[(idx_r*len(cols))+idx_c].resize((width//10, height//divider)), width=width//10)
                         
