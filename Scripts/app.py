@@ -48,7 +48,7 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
         point_display_radius = st.sidebar.slider("Point display radius: ", 1, 25, 3)
     stroke_color = st.sidebar.color_picker("Stroke color hex: ", "#FF8000")
     bg_color = "#FFFFFF" # st.sidebar.color_picker("Background color hex: ", "#FFFFFF")
-    bg_image = None # st.sidebar.file_uploader("Background image:", type=["png", "jpg"])
+    bg_image = st.sidebar.file_uploader("Background image:", type=["png", "jpg"])
     realtime_update = True # st.sidebar.checkbox("Update in realtime", True)
 
     # Create a canvas component
