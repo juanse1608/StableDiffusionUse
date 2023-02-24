@@ -80,7 +80,7 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
             # Set up our initial generation parameters.
             answers = stability_api.generate(
                 # If you have an init image
-                init_image=Image.open(image_alt).resize((256,256)), # Image.fromarray(canvas_result.image_data).resize((256,256)),
+                init_image=Image.open(image_alt).resize((512,512)), # Image.fromarray(canvas_result.image_data).resize((256,256)),
                 prompt=prompt,
                 start_schedule=schedule,
                 seed=992446758, # If a seed is provided, the resulting generated image will be deterministic.
