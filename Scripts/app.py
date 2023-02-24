@@ -87,7 +87,7 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
                                 # What this means is that as long as all generation parameters remain the same, you can always recall the same image simply by generating it again.
                                 # Note: This isn't quite the case for Clip Guided generations, which we'll tackle in a future example notebook.
                 steps=100, # Amount of inference steps performed on image generation. Defaults to 30. 
-                cfg_scale=scale, # Influences how strongly your generation is guided to match your prompt.
+                cfg_scale=8.0, # Influences how strongly your generation is guided to match your prompt.
                             # Setting this value higher increases the strength in which it tries to match your prompt.
                             # Defaults to 7.0 if not specified.
                 width=512, # Generation width, defaults to 512 if not included.
