@@ -14,7 +14,7 @@ from password import check_password
 
 
 # Configuration
-width = 600
+width = 700
 os.environ['STABILITY_HOST'] = 'grpc.stability.ai:443'
 try:
     with open('Tokens/tokens.json', 'r') as file:
