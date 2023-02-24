@@ -111,9 +111,5 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
                         # img.save(str(artifact.seed)+ ".png") # Save our generated images with their seed number as the filename.
             logging.info(f'PROCESSED SCALE {scale} AND SCHEDULE {schedule}')
             
-        divider = 3
-        for idx_r in range(len(schedules)):
-            cols = st.columns(len(scales))
-            for idx_c, col in enumerate(cols):
-                col.image(imgs[(idx_r*len(cols))+idx_c].resize((width//divider, height//divider)), width=width//divider)
+        st.image(imgs[0])
                         
