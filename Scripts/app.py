@@ -93,7 +93,7 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
                 width=512, # Generation width, defaults to 512 if not included.
                 height=512, # Generation height, defaults to 512 if not included.
                 samples=1, # Number of images to generate, defaults to 1 if not included.
-                guidance_models=['CLIP']
+                guidance_preset=generation.GUIDANCE_PRESET_FAST_GREEN # Enables CLIP Guidance.
             )
 
             # Set up our warning to print to the console if the adult content classifier is tripped.
