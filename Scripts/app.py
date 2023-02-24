@@ -69,6 +69,8 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
     
     schedules = np.arange(0.0,1.25,0.25)
     scales = np.arange(6,12,2)
+    print(schedules)
+    print(scales)
     prompt = st.text_input("")
     button = st.button(label='Generate Image')
     imgs = []
