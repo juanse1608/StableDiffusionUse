@@ -12,10 +12,14 @@ import warnings
 
 
 # Configuration
+width = 600
 os.environ['STABILITY_HOST'] = 'grpc.stability.ai:443'
-with open('Tokens/tokens.json', 'r') as file:
-  tokens = json.load(file)
-os.environ['STABILITY_KEY'] = tokens['STABILITY_TOKEN']
+try:
+    with open('Tokens/tokens.json', 'r') as file:
+        tokens = json.load(file)
+    os.environ['STABILITY_KEY'] = tokens['STABILITY_TOKEN']
+except:
+    os.environ['STABILITY_KEY'] = st.secrets['STABILITY_TOKEN']
 
 # Set up our connection to the API.
 stability_api = client.StabilityInference(
@@ -48,20 +52,11 @@ canvas_result = st_canvas(
     background_image=Image.open(bg_image) if bg_image else None,
     update_streamlit=realtime_update,
     drawing_mode=drawing_mode,
+    width=width,
     point_display_radius=point_display_radius if drawing_mode == 'point' else 0,
     key="canvas",
     display_toolbar=True
 )
-
-# Do something interesting with the image data and paths
-# if canvas_result.image_data is not None:
-#     my_img = st.image(canvas_result.image_data)
-
-# if canvas_result.json_data is not None:
-#     objects = pd.json_normalize(canvas_result.json_data["objects"]) # need to convert obj to str because PyArrow
-#     for col in objects.select_dtypes(include=['object']).columns:
-#         objects[col] = objects[col].astype("str")
-#     st.dataframe(objects)
 
 # Set up our initial generation parameters.
 prompt = st.text_input("")
@@ -69,7 +64,7 @@ button = st.button(label='Generate Image')
 if button:
     answers = stability_api.generate(
         # If you have an init image
-        # init_image=Image.fromarray(canvas_result.image_data).resize((256,256)),
+        init_image=Image.fromarray(canvas_result.image_data).resize((256,256)),
         prompt=prompt,
         start_schedule=0.5,
         seed=992446758, # If a seed is provided, the resulting generated image will be deterministic.
@@ -97,5 +92,5 @@ if button:
                     "Please modify the prompt and try again.")
             if artifact.type == generation.ARTIFACT_IMAGE:
                 img = Image.open(io.BytesIO(artifact.binary))
-                st.image(img)
+            st.image(img, width=width)
                 # img.save(str(artifact.seed)+ ".png") # Save our generated images with their seed number as the filename.
