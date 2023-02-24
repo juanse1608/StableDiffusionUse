@@ -112,5 +112,5 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
             for idx_r in range(len(schedules)):
                 cols = st.columns(len(scales))
                 for idx_c, col in enumerate(cols):
-                    col.image(imgs[(idx_r*len(cols))+idx_c], width=width//10, height=height//10)
+                    col.image(imgs[(idx_r*len(cols))+idx_c].resize(width//10, height//10), width=width//10)
                         
