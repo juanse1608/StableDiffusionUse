@@ -67,8 +67,8 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
         display_toolbar=True
     )
     
-    schedules = np.arange(0.0,1.25,0.25)
-    scales = np.arange(6,12,2)
+    schedules = np.arange(0.5,1.25,0.25)
+    scales = np.arange(6,10,2)
     logging.info(schedules)
     logging.info(scales)
     prompt = st.text_input("")
@@ -85,7 +85,7 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
                 seed=992446758, # If a seed is provided, the resulting generated image will be deterministic.
                                 # What this means is that as long as all generation parameters remain the same, you can always recall the same image simply by generating it again.
                                 # Note: This isn't quite the case for Clip Guided generations, which we'll tackle in a future example notebook.
-                steps=100, # Amount of inference steps performed on image generation. Defaults to 30. 
+                steps=30, # Amount of inference steps performed on image generation. Defaults to 30. 
                 cfg_scale=scale, # Influences how strongly your generation is guided to match your prompt.
                             # Setting this value higher increases the strength in which it tries to match your prompt.
                             # Defaults to 7.0 if not specified.
@@ -110,6 +110,7 @@ if (('LOCAL_MACHINE' in st.session_state.keys()) and (st.session_state['LOCAL_MA
                         imgs.append(img)
                         # st.image(img, width=width)
                         # img.save(str(artifact.seed)+ ".png") # Save our generated images with their seed number as the filename.
+            logging.info(f'PROCESSED SCALE {scale} AND SCHEDULE {schedule}')
             
         divider = 3
         for idx_r in range(len(schedules)):
