@@ -29,6 +29,7 @@ try:
     st.session_state['LOCAL_MACHINE'] = True
 except:
     stability_key = st.secrets['STABILITY_TOKEN']
+    stability_api_key = st.secrets['STABILITY_API_TOKEN']
     st.session_state['LOCAL_MACHINE'] = False
 
 # Set up our connection to the API.
